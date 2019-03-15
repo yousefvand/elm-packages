@@ -1,0 +1,32 @@
+{
+  "name": "elm-packages",
+  "version": "0.1.0",
+  "description": "Elm packages info library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yousefvand/elm-packages.git"
+  },
+  "keywords": [
+    "Elm",
+    "Packages",
+    "Oracle",
+    "info"
+  ],
+  "author": "Remisa Yousefvand <remisa.yousefvand@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yousefvand/elm-packages/issues"
+  },
+  "homepage": "https://github.com/yousefvand/elm-packages#readme",
+  "devDependencies": {
+    "cspell": "^3.2.2",
+    "standard": "^12.0.1"
+  },
+  "dependencies": {
+    "fs": "0.0.1-security"
+  }
+}
