@@ -26,7 +26,20 @@ const elmInfo = require('elm-packages')
 const docs = elmInfo.info('elm','browser','1.0.1')
 ```
 
+- Create offline db:
+
+Json file size is approximately 23MB uncompressed and 3.5MB compressed.
+
+```js
+const elmInfo = require('elm-packages')
+const elmInfo.offline('path/to/db.json')
+```
+
 ## Changes
+
+### 0.3.0
+
+- Create offline db.
 
 ### 0.2.0
 

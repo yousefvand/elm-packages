@@ -1,6 +1,6 @@
 {
   "name": "elm-packages",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Elm packages info library",
   "main": "index.js",
   "scripts": {
@@ -23,5 +23,8 @@
   },
   "homepage": "https://github.com/yousefvand/elm-packages#readme",
   "devDependencies": {},
-  "dependencies": {}
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "path": "^0.12.7"
+  }
 }
