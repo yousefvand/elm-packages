@@ -1,10 +1,11 @@
 {
   "name": "elm-packages",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Elm packages info library",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "createdb": "rm db.json && node ./lib/offline.js"
   },
   "repository": {
     "type": "git",
