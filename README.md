@@ -12,70 +12,132 @@ npm i elm-packages
 
 ## Usage
 
-- Get all Elm packages information:
+### Get all Elm packages information:
 
 ```js
 const elmInfo = require('elm-packages')
-const allPackages = elmInfo.packages()
+// Inside an async function
+const allPackages = await elmInfo.packages()
 ```
 
-- Get documentation of a package:
+### Get documentation of a package:
 
 ```js
 const elmInfo = require('elm-packages')
-const docs = elmInfo.info('elm','browser','1.0.1')
+// Inside an async function
+const docs = await elmInfo.info('elm','browser','1.0.1')
 ```
 
-- Create offline db:
-
-Json file size is approximately 23MB uncompressed and 3.5MB compressed.
+### Get available versions of a package:
 
 ```js
 const elmInfo = require('elm-packages')
-const elmInfo.offline('path/to/db.json')
+// Inside an async function
+const docs = await elmInfo.version('elm','browser')
 ```
 
-- Search by keyword
+### Search by keyword (offline)
 
-This package uses an offline db (`db.json` ~ 24MB) to provide Elm type info (npm compresses all packages by default so the download size would be < 3.5 MB) and uses an in memory `Map` indexed by `methods` so queries would be resolved super fast.
-Upon searching a `keyword` all versions of all Elm packages containing such a `method` will be returned as an array of objects with the following structure:
+This package uses an offline db (`db.json` ~ 24MB) to provide Elm type info (npm compresses all packages by default so the download size would be < 3.5 MB) and uses an in memory `Map` indexed by `methods` and `unions` so queries would be resolved super fast.
+You can pass an `options` object alongside `keyword` to customize your search. Structure of `options` object is:
 
-```json
+```js
 {
-  'package': 'parent package name',
-  'version': 'version',
-  'type': 'type signature',
-  'comment': 'comment'
+  method: String
+  packages: Array
+  type: String
 }
 ```
 
-Example usage:
+- `method`: How to match keyword. Valid options are:
+  - `exact`: Results should be exactly the same as search `keyword`.
+  - `startsWith`: Results should be started with search `keyword`.
+  - `contains`: `keyword` can appear anywhere in searched entries.
+- `packages` : Array of `string`. Array of all packages to search for keyword. Empty array means all packages.
+- `type`: What to search. Valid options are:
+  - `method`: Search `keyword` in methods.
+  - `union`: Search `keyword` in unions.
+  - `any`: Search `keyword` in methods and unions.
+
+Search result is an object of:
 
 ```js
-const elmInfo = require('elm-packages')
-const resultArray = elmInfo.search('reverse')
+{
+  Methods: [],
+  Unions: []
+}
 ```
 
-## Contribution
+### Examples
 
-This package is experimental yet.
+```js
+search('toUpper')
+```
 
-**PRs** are welcome.
+```js
+search('toUpper',
+  {
+    method: 'exact',
+    packages: [ 'NoRedInk/elm-formatted-text-19' ],
+    type: 'method'
+  }
+)
+```
 
-## Changes
+```js
+search('to',
+  {
+    method: 'startsWith',
+    packages: [ 'elm/core', 'NoRedInk/elm-formatted-text-19' ],
+    type: 'method'
+  }
+)
+```
 
-### 0.4.0
+```js
+search('fun',
+  {
+    method: 'contains',
+    packages: [],
+    type: 'method'
+  }
+)
+```
+
+```js
+search('Error',
+  {
+    method: 'exact',
+    packages: [],
+    type: 'union'
+  }
+)
+```
+
+### Contribution
+
+**PRs** are welcome. Check if tests pass by `npm run test`
+
+### Changes
+
+#### 0.5.0
+
+- Search options added with examples.
+- Error in case of malformed Json.
+- Unit tests added.
+
+#### 0.4.0
 
 - Search added.
 
-### 0.3.0
+#### 0.3.0
 
 - Create offline db.
 
-### 0.2.0
+#### 0.2.0
 
 - Get latest package version info by default.
 
-### 0.1.0
+#### 0.1.0
 
 - Initial release.

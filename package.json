@@ -1,11 +1,11 @@
 {
   "name": "elm-packages",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Elm packages info library",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "createdb": "rm db.json && node ./lib/offline.js"
+    "test": "node_modules/.bin/jest",
+    "create-db": "rm db.json 2> /dev/null && node ./lib/offline.js && date +%s > db-timestamp.txt"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,9 @@
     "url": "https://github.com/yousefvand/elm-packages/issues"
   },
   "homepage": "https://github.com/yousefvand/elm-packages#readme",
-  "devDependencies": {},
+  "devDependencies": {
+    "jest": "^24.5.0"
+  },
   "dependencies": {
     "fs": "0.0.1-security",
     "path": "^0.12.7"

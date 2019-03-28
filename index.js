@@ -1,11 +1,11 @@
 const info = require('./lib/info')
 const packages = require('./lib/packages')
-const versions = require('./lib/versions')
 const search = require('./lib/search')
+const versions = require('./lib/versions')
 
 module.exports = {
   info: info,
   packages: packages,
-  versions: versions,
-  search: search
+  search: search,
+  versions: versions
 }
