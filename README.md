@@ -120,6 +120,11 @@ search('Error',
 
 ### Changes
 
+#### 0.5.1
+
+- Fixing security vulnerability in `js-yaml` dependency.
+- Fixing security vulnerability in `handlebars` dependency.
+
 #### 0.5.0
 
 - Search options added with examples.
@@ -141,3 +146,4 @@ search('Error',
 #### 0.1.0
 
 - Initial release.
+
