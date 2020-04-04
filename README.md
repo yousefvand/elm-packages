@@ -1,3 +1,5 @@
+# THIS PACKAGE IS DEPRECATED AND NOT MAINTAINED ANYMORE
+
 # elm-packages
 
 Elm packages information library.
